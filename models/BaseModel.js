@@ -3,7 +3,8 @@ const fs = require("fs").promises;
 
 class BaseModel {
     constructor(filePath) {
-        this.filePath = filePath;
+        // this.filePath = filePath;
+        this.filePath = path.join("/tmp", path.basename(filePath));
     }
 
     async read() {
