@@ -1,5 +1,6 @@
 const validator = require("validatorjs");
 const EmployeeModel = require("../models/EmployeeModel");
+const AbsModel = require("../models/AbsModel");
 
 const EmployeeController = {
     getUniqID: function (prefix = "EMP") {
@@ -180,6 +181,7 @@ const EmployeeController = {
                 };
                 return res.status(404).json(apiResult);
             }
+            await AbsModel.delete(id); // Hapus data di report.json berdasarkan employeeId
             apiResult = {
                 code: 200,
                 status: "success",

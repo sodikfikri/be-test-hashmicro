@@ -51,6 +51,19 @@ class BaseModel {
         return true;
     }
 
+    async deleteReportABS(employeeId) {
+        let data = await this.read();
+        const initialLength = data.length;
+
+        data = data.filter((item) => item.employeeId !== employeeId);
+        if (data.length === initialLength) {
+            return false; // tidak ada yang dihapus
+        }
+
+        await this.write(data);
+        return true;
+    }
+
     async findReport(employeeId, date) {
         const data = await this.read()
         return data.find(

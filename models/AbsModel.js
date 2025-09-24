@@ -23,6 +23,9 @@ class AbsModel extends BaseModel {
     async all() {
         return await this.read();
     }
+    async delete(empID) {
+        return await this.deleteReportABS(empID);
+    }
 }
 
 module.exports = new AbsModel();
